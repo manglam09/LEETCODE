@@ -18,3 +18,29 @@ public:
         return ans;
     }
 };
+
+
+
+//optimized code
+
+
+class Solution {
+public:
+    int maxFrequencyElements(vector<int>& nums) {
+        unordered_map<int, int> count;
+        int max=0;
+        int ans=0;
+
+        for(int num:nums){
+           count[num] += 1;
+           int freq=max;
+            if(count[num]>max) max=count[num];
+            if(count[num]==max){
+                if(max!=freq) ans=count[num];
+                else ans+=count[num];
+            }
+        }
+       
+        return ans;
+    }
+};
