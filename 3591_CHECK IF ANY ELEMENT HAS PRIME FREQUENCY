@@ -1,0 +1,25 @@
+class Solution {
+    bool isPrime(int num) {
+    if (num <= 1)
+        return false;
+    for (int i = 2;  i*i <= num; i++) {
+        if (num % i == 0)
+            return false;
+    }
+    return true;
+}
+public:
+    bool checkPrimeFrequency(vector<int>& nums) {
+        int n=nums.size();
+   unordered_map<int,int>arr;
+    for (int i = 0; i < nums.size(); i++) {
+    arr[nums[i]]++;
+   }
+   for (auto &it : arr) {
+    if (isPrime(it.second)) {
+        return true;
+    }
+ }
+ return false;
+    }
+};
