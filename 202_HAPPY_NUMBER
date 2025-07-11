@@ -1,0 +1,22 @@
+class Solution {
+    int check(int &n){
+        int ans=0;
+        while(n>0){
+            int num=n%10;
+            n=n/10;
+            ans += num * num;
+        }
+        return ans;
+    }
+public:
+    bool isHappy(int n) {
+        unordered_set<int>seen;
+        int ans=n;
+       while(ans!=1){
+        if(seen.count(ans)) return false;
+        seen.insert(ans);
+         ans=check(ans);
+       }
+      return true;
+    }
+};
