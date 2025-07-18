@@ -1,0 +1,58 @@
+//question 
+
+Weekly Contest 3
+
+Q1. Is Subsequence
+Solved
+Easy
+Given two strings s and t, return true if s is a subsequence of t, or false otherwise.
+A subsequence of a string is a new string that is formed from the original string by deleting some (can be none) 
+of the characters without disturbing the relative positions of the remaining characters. (i.e., "ace" is a subsequence of "abcde" while "aec" is not).
+
+ 
+
+Example 1:
+
+Input: s = "abc", t = "ahbgdc"
+Output: true
+Example 2:
+
+Input: s = "axc", t = "ahbgdc"
+Output: false
+ 
+
+Constraints:
+
+0 <= s.length <= 100
+0 <= t.length <= 104
+s and t consist only of lowercase English letters.
+ 
+
+//SOLUTION
+
+class Solution {
+public:
+    bool isSubsequence(string s, string t) {
+        vector<char>ans;
+        int k=0;
+        for (int i = 0; i < s.size(); i++) {
+            while (k < t.size()) {
+                if (s[i] == t[k]) {
+                    ans.push_back(t[k]);
+                    k++; // move t pointer forward
+                    break; // move to next s[i]
+                }
+                k++;
+            }
+        }
+        if(ans.size()!=s.size()) return false;
+        for(int i=0;i<ans.size();i++){
+            if(ans[i]!=s[i])return false;
+        }
+        return true;
+    }
+};
+
+Weekly Contest 3
+Virtual
+©leetcode
