@@ -1,0 +1,32 @@
+// QUESTION 
+Given a positive integer n, you can apply one of the following operations:
+
+* If n is even, replace n with n / 2.
+* If n is odd, replace n with either n + 1 or n - 1.
+Return the minimum number of operations needed for n to become 1
+
+//SOLUTION
+class Solution {
+public:
+    int integerReplacement(int n) {
+        long long num = n;                                            // TO OVERCOME RUNTIME ERROR DUR TO SIZE OF N
+        int count = 0;
+        while (num != 1 && num > 0) {
+            if (num % 2 == 0) {
+                num = num / 2;
+            } 
+            else if (num == 3) {                                  //N==3 -> N=3-1=2 -> N=2/2=1 (SOLVED)
+                num = num - 1;
+            } 
+            else if (num % 4 == 1) {                             //N=13  -> N=12 -> N=6 -> N=3
+                num = num - 1;
+            } 
+            else if (num % 4 == 3) {                            //N=15 -> N=16 -> N=8 -> N=4 -> N=2 -> N=1 (MINIMUM STEPS)
+                num = num + 1;
+            }
+            count++;
+        }
+        return count;
+    }
+};
+©leetcode
